@@ -1,0 +1,19 @@
+{
+  "name": "bookmark-api",
+  "version": "1.0.0",
+  "description": "RESTful API for Bookmark App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xcidic/bookmark-api.git"
+  },
+  "author": "Abdul Fattah Ikhsan <ikhsannetwork@gmail.com> (http://ikhsannetwork.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xcidic/bookmark-api/issues"
+  },
+  "homepage": "https://github.com/xcidic/bookmark-api#readme"
+}
