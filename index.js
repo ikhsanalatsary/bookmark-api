@@ -36,7 +36,7 @@ app.set('PORT', process.env.PORT || 3000);
 if (process.env.NODE_ENV === 'development') app.use(errorhandler());
 // const clientPath = path.join(__dirname, '/../client');
 // app.use(express.static(clientPath));
-app.get('/*', (req, res) => res.send('It works'));
+app.get('/', (req, res) => res.send('It works'));
 app.use('/api/bookmarks', require('./routes/bookmark.route'));
 app.use('/api/categories', require('./routes/bookmark-category.route'));
 
