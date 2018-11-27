@@ -34,6 +34,7 @@ url: https://bookmarks-apis.herokuapp.com/
   // PUT by id (update single bookmark)
   fetch(`${BASE_URL}/api/bookmarks/${id}`, {
     method: "PUT", // *GET, POST, PUT, DELETE, etc.
+    body: JSON.stringify(data)
   }).then();
 ```
 
