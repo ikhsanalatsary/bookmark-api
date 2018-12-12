@@ -38,8 +38,8 @@ if (process.env.NODE_ENV === 'development') app.use(errorhandler());
 // app.use(express.static(clientPath));
 app.get('/', (req, res) => res.send('It works'));
 app.use('/api/bookmarks', require('./routes/bookmark.route'));
-app.use('/api/articles', require('./routes/article.route'));
-app.use('/api/article-categories', require('./routes/article-category.route'));
+app.use('/api/v1/articles', require('./routes/article.route'));
+app.use('/api/v1/article-categories', require('./routes/article-category.route'));
 app.use('/api/categories', require('./routes/bookmark-category.route'));
 
 app.listen(app.get('PORT'), () => {
