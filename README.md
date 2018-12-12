@@ -86,14 +86,22 @@ axios
 
 // POST (buat baru)
 axios
-  .post(articleUrl)
+  .post(articleUrl, {
+    title: "Fred",
+    description: "Flintstone",
+    categories: ["312637ncnsdfbjbbcd"]
+  })
   .then()
   .catch();
 
 // PUT (update berdasarkan id)
 const _id = "ahsdjasdhjasd2346237bdsc7234b";
 axios
-  .put(articleUrl + "/" + _id)
+  .put(articleUrl + "/" + _id, {
+    title: "Fred",
+    description: "Flintstone",
+    categories: ["312637ncnsdfbjbbcd"]
+  })
   .then()
   .catch();
 
