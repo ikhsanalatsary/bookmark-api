@@ -1,14 +1,14 @@
 'use strict';
 
 /* eslint-disable no-param-reassign */
-const Bookmark = require('../model/bookmark.model');
+const ArticleCategory = require('../model/article-category.model');
 
 exports.create = async (req, res) => {
 	const { body } = req;
-	const bookmark = new Bookmark(body);
+	const articleCategory = new ArticleCategory(body);
 	try {
-		await bookmark.save();
-		return res.status(200).json(bookmark);
+		await articleCategory.save();
+		return res.status(200).json(articleCategory);
 	} catch (e) {
 		return handleError(res, e);
 	}
@@ -17,8 +17,8 @@ exports.create = async (req, res) => {
 exports.show = async (req, res) => {
 	const id = req.params.id;
 	try {
-    const bookmark = await Bookmark.findById(id).populate('categories');
-		return res.status(200).json(bookmark);
+		const articleCategory = await ArticleCategory.findById(id);
+		return res.status(200).json(articleCategory);
 	} catch (e) {
 		return res.status(400).json(e);
 	}
@@ -26,9 +26,9 @@ exports.show = async (req, res) => {
 
 exports.index = async (req, res) => {
 	try {
-    const bookmarks = await Bookmark.find({}, null, { sort: { url: 1 } }).populate('categories');
-		if (bookmarks.length === 0) return res.sendStatus(404);
-		return res.status(200).json(bookmarks);
+		const articleCategories = await ArticleCategory.find({}, null, { sort: { title: 1 } });
+		if (articleCategories.length === 0) return res.sendStatus(404);
+		return res.status(200).json(articleCategories);
 	} catch (e) {
 		return res.sendStatus(400);
 	}
@@ -38,9 +38,9 @@ exports.update = async (req, res) => {
 	const { body, params } = req;
 	const { id } = params;
 	try {
-		let bookmark = await Bookmark.findById(id);
-		bookmark = Object.assign(bookmark, body);
-		const result = await bookmark.save();
+		let articleCategory = await ArticleCategory.findById(id);
+		articleCategory = Object.assign(articleCategory, body);
+		const result = await articleCategory.save();
 		return res.status(200).json(result);
 	} catch (e) {
 		return res.status(400).json(e);
@@ -49,7 +49,7 @@ exports.update = async (req, res) => {
 
 exports.deletes = async (req, res) => {
 	try {
-		await Bookmark.remove({ _id: req.params.id });
+		await ArticleCategory.remove({ _id: req.params.id });
 		return res.sendStatus(200);
 	} catch (e) {
 		return res.sendStatus(400);
@@ -58,8 +58,8 @@ exports.deletes = async (req, res) => {
 
 exports.patch = async (req, res) => {
 	try {
-		const bookmark = await Bookmark.findById(req.params.id);
-		const result = await bookmark.save();
+		const articleCategory = await ArticleCategory.findById(req.params.id);
+		const result = await articleCategory.save();
 		return res.status(200).json(result);
 	} catch (e) {
 		return res.json(400, e);
