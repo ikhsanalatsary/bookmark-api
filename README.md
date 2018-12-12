@@ -54,17 +54,17 @@ url: https://bookmarks-apis.herokuapp.com/
     body: JSON.stringify(data)
   }).then();
 
-  // GET by id (show single bookmark)
+  // GET by id (show single article)
   // params id
   fetch(`${BASE_URL}/api/articles/${id}`).then();
 
-  // DELETE by id (remove single bookmark)
+  // DELETE by id (remove single article)
   // params id
   fetch(`${BASE_URL}/api/articles/${id}`, {
     method: "DELETE", // *GET, POST, PUT, DELETE, etc.
   }).then();
 
-  // PUT by id (update single bookmark)
+  // PUT by id (update single article)
   // params id
   fetch(`${BASE_URL}/api/articles/${id}`, {
     method: "PUT", // *GET, POST, PUT, DELETE, etc.
