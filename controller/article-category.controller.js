@@ -27,7 +27,7 @@ exports.show = async (req, res) => {
 exports.index = async (req, res) => {
 	try {
 		const articleCategories = await ArticleCategory.find({}, null, { sort: { title: 1 } });
-		if (articleCategories.length === 0) return res.sendStatus(404);
+		// if (articleCategories.length === 0) return res.sendStatus(404);
 		return res.status(200).json(articleCategories);
 	} catch (e) {
 		return res.sendStatus(400);
