@@ -84,6 +84,13 @@ axios
   .then()
   .catch();
 
+// GET Semua Articles berdasar category
+const category = 'hsafdjsdfhjsdf' // category id
+axios
+  .get(articleUrl + '?' + 'category=' + category)
+  .then()
+  .catch();
+
 // POST (buat baru)
 axios
   .post(articleUrl, {
