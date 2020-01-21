@@ -1,6 +1,6 @@
 ## Bookmarks APIs
 
-url: https://bookmarks-apis.herokuapp.com/
+url: https://apicollections.herokuapp.com
 
 ### End point
 
@@ -10,11 +10,15 @@ url: https://bookmarks-apis.herokuapp.com/
 | /api/article-categories | article categories data | /:id   | `POST`, `PUT`, `GET`, `DELETE`, `PATCH` |
 | /api/bookmarks          | bookmarks data          | /:id   | `POST`, `PUT`, `GET`, `DELETE`, `PATCH` |
 | /api/categories         | categories data         | /:id   | `POST`, `PUT`, `GET`, `DELETE`, `PATCH` |
+| /api/quotes         | quotes data         | /:id   | `POST`, `PUT`, `GET`, `DELETE`, `PATCH` |
+| /api/quotes?skip=0&sort[text]=1&sort[author]=1        | quotes with params skip & sort         | multiple   | `GET` |
+| /api/quotes?page=1&limit=10&sort[text]=-1&sort[author]=-1        | quotes with params page, limit & sort         | multiple   | `GET` |
+| /api/quotes?q=steve        | quotes with params q for search         | multiple   | `GET` |
 
 ### Example
 
 ```javascript
-let BASE_URL = "https://bookmarks-apis.herokuapp.com";
+let BASE_URL = "https://apicollections.herokuapp.com";
 
 // Bookmark API
 // GET All
@@ -125,4 +129,4 @@ axios
   .catch();
 ```
 
-For Xcidic course. Xploring JavaScript!
+Happy Xploring JavaScript!
