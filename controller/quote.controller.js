@@ -27,26 +27,29 @@ exports.show = async (req, res) => {
 exports.index = async (req, res) => {
   try {
     let { q, page = 1, limit = 10, sort = { created: -1 }, skip } = req.query;
-    page = ~~page || 1;
-    limit = ~~limit || 10;
+    page = Math.floor(page) || 1;
+    limit = Math.floor(limit) || 10;
     let params = {};
     if (q) {
       let paramRegex = { $regex: q, $options: 'i' };
       params.$or = [{ text: paramRegex }, { author: paramRegex }];
     }
     const quotes = await Quote.find(params)
-      .skip(skip !== undefined ? ~~skip : (page - 1) * limit) // actually, page starts from 0, like index array
-      .limit(~~limit)
+      .skip(skip !== undefined ? Math.floor(skip) : (page - 1) * limit) // actually, page starts from 0, like index array
+      .limit(limit)
       .sort(sort);
     const count = await Quote.countDocuments(params);
-    const pages = ~~(count / limit);
+    // console.log(page * limit)
+    // console.log(count / limit)
+    const pages = Math.ceil(count / limit);
     // if (quotes.length === 0) return res.sendStatus(404);
+    // console.log(pages);
     return res.status(200).json({
       count,
       limit,
-      page: skip !== undefined ? (~~skip + limit) / limit : page,
+      page: skip !== undefined ? (Math.floor(skip) + limit) / limit : page,
       pages,
-      lastPage: pages === 0,
+      lastPage: page * limit >= count,
       quotes
     });
   } catch (e) {
